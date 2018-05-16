@@ -53,6 +53,7 @@ shuffle(cards).forEach(function(element) {
 
   const li = document.createElement('li');
   li.className = 'card';
+  li.dataset.symbol = element;
 
   const i = document.createElement('i');
   i.className = `fa fa-${element}`;
@@ -75,3 +76,19 @@ deck.append(fragment);
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+function displaySymbol(element) {
+  element.classList.add('open');
+  element.classList.add('show');
+}
+
+deck.addEventListener('click', function(e) {
+
+  if (e.target.nodeName === 'LI') {
+
+    // Display the card's symbol
+    displaySymbol(e.target);
+
+  }
+
+});
