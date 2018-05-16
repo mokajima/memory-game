@@ -1,7 +1,26 @@
 /*
  * Create a list that holds all of your cards
  */
+const cards = [
+  'diamond',
+  'paper-plane-o',
+  'anchor',
+  'bolt',
+  'cube',
+  'anchor',
+  'leaf',
+  'bicycle',
+  'diamond',
+  'bomb',
+  'leaf',
+  'bomb',
+  'bolt',
+  'bicycle',
+  'paper-plane-o',
+  'cube'
+];
 
+const deck = document.getElementById('deck');
 
 /*
  * Display the cards on the page
@@ -12,19 +31,39 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-    return array;
+  return array;
 }
 
+// Empty the deck
+while (deck.firstChild) deck.removeChild(deck.firstChild);
+
+const fragment = document.createDocumentFragment();
+
+shuffle(cards).forEach(function(element) {
+
+  const li = document.createElement('li');
+  li.className = 'card';
+
+  const i = document.createElement('i');
+  i.className = `fa fa-${element}`;
+
+  li.append(i);
+  fragment.append(li);
+
+});
+
+// Add the fragment to the deck
+deck.append(fragment);
 
 /*
  * set up the event listener for a card. If a card is clicked:
