@@ -90,6 +90,10 @@ function addCardToOpenCards(element) {
   }
 }
 
+function lockCard(element) {
+  element.classList.add('match');
+}
+
 deck.addEventListener('click', function(e) {
 
   if (e.target.nodeName === 'LI') {
@@ -99,6 +103,25 @@ deck.addEventListener('click', function(e) {
 
     // Add the card to openCards
     addCardToOpenCards(e.target);
+
+    // Check to see if the two cards match
+    if (0 === openCards.length % 2) {
+
+      // Get selected cards
+      let cardOne = openCards[openCards.length - 1];
+      let cardTwo = openCards[openCards.length - 2];
+
+      if (cardOne.dataset.symbol === cardTwo.dataset.symbol) {
+
+        // If the cards do match, lock the cards in the open position
+        lockCard(cardOne);
+        lockCard(cardTwo);
+
+      } else {
+
+      }
+
+    }
 
   }
 
