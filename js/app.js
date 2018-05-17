@@ -77,9 +77,17 @@ deck.append(fragment);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+const openCards = [];
+
 function displaySymbol(element) {
   element.classList.add('open');
   element.classList.add('show');
+}
+
+function addCardToOpenCards(element) {
+  if (!openCards.includes(element)) {
+    openCards.push(element);
+  }
 }
 
 deck.addEventListener('click', function(e) {
@@ -88,6 +96,9 @@ deck.addEventListener('click', function(e) {
 
     // Display the card's symbol
     displaySymbol(e.target);
+
+    // Add the card to openCards
+    addCardToOpenCards(e.target);
 
   }
 
