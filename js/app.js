@@ -20,7 +20,7 @@ const cards = [
   'cube'
 ];
 
-const openCards = [];
+let openCards;
 
 let moveCounter;
 
@@ -52,6 +52,9 @@ function shuffle(array) {
 
 // Initizalize the game
 function initialize() {
+
+  // Empty openCards
+  openCards = [];
 
   // Reset the move counter
   moveCounter = 0;
