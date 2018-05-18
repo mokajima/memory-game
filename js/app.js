@@ -84,6 +84,11 @@ function displaySymbol(element) {
   element.classList.add('show');
 }
 
+function hideSymbol(element) {
+  element.classList.remove('open');
+  element.classList.remove('show');
+}
+
 function addCardToOpenCards(element) {
   if (!openCards.includes(element)) {
     openCards.push(element);
@@ -126,6 +131,8 @@ deck.addEventListener('click', function(e) {
         // if the cards do not match, remove the cards from the list and hide the card's symbol
         removeCardFromOpenCards();
         removeCardFromOpenCards();
+        hideSymbol(cardOne);
+        hideSymbol(cardTwo);
 
       }
 
