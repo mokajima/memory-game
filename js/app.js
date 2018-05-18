@@ -90,6 +90,10 @@ function addCardToOpenCards(element) {
   }
 }
 
+function removeCardFromOpenCards() {
+  openCards.pop();
+}
+
 function lockCard(element) {
   element.classList.add('match');
 }
@@ -118,6 +122,10 @@ deck.addEventListener('click', function(e) {
         lockCard(cardTwo);
 
       } else {
+
+        // if the cards do not match, remove the cards from the list and hide the card's symbol
+        removeCardFromOpenCards();
+        removeCardFromOpenCards();
 
       }
 
