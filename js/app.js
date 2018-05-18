@@ -21,6 +21,7 @@ const cards = [
 ];
 
 const deck = document.getElementById('deck');
+const moves = document.getElementById('moves');
 
 /*
  * Display the cards on the page
@@ -78,6 +79,7 @@ deck.append(fragment);
  */
 
 const openCards = [];
+let moveCounter = 0;
 
 function displaySymbol(element) {
   element.classList.add('open');
@@ -101,6 +103,10 @@ function removeCardFromOpenCards() {
 
 function lockCard(element) {
   element.classList.add('match');
+}
+
+function updateMoveCounter() {
+  moves.textContent = ++moveCounter;
 }
 
 deck.addEventListener('click', function(e) {
@@ -135,6 +141,9 @@ deck.addEventListener('click', function(e) {
         hideSymbol(cardTwo);
 
       }
+
+      // Update the score panel
+      updateMoveCounter();
 
     }
 
