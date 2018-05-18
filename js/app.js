@@ -50,27 +50,43 @@ function shuffle(array) {
   return array;
 }
 
-// Empty the deck
-while (deck.firstChild) deck.removeChild(deck.firstChild);
+// Initizalize the game
+function initialize() {
 
-const fragment = document.createDocumentFragment();
+  // Reset the move counter
+  moveCounter = 0;
+  moves.textContent = moveCounter;
 
-shuffle(cards).forEach(function(element) {
+  // Reset the stars
+  stars.querySelectorAll('.fa-star-o').forEach(function(element) {
+    element.className = 'fa fa-star';
+  });
 
-  const li = document.createElement('li');
-  li.className = 'card';
-  li.dataset.symbol = element;
+  // Empty the deck
+  while (deck.firstChild) deck.removeChild(deck.firstChild);
 
-  const i = document.createElement('i');
-  i.className = `fa fa-${element}`;
+  const fragment = document.createDocumentFragment();
 
-  li.append(i);
-  fragment.append(li);
+  shuffle(cards).forEach(function(element) {
 
-});
+    const li = document.createElement('li');
+    li.className = 'card';
+    li.dataset.symbol = element;
 
-// Add the fragment to the deck
-deck.append(fragment);
+    const i = document.createElement('i');
+    i.className = `fa fa-${element}`;
+
+    li.append(i);
+    fragment.append(li);
+
+  });
+
+  // Add the fragment to the deck
+  deck.append(fragment);
+
+}
+
+initialize();
 
 /*
  * set up the event listener for a card. If a card is clicked:
