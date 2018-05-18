@@ -21,6 +21,7 @@ const cards = [
 ];
 
 const deck = document.getElementById('deck');
+const stars = document.getElementById('stars');
 const moves = document.getElementById('moves');
 
 /*
@@ -109,6 +110,20 @@ function updateMoveCounter() {
   moves.textContent = ++moveCounter;
 }
 
+function updateStars() {
+
+  // Remove a star according to the number of moves
+  switch (moveCounter) {
+    case 12:
+      stars.querySelector('li:last-child i').className += '-o';
+      break;
+    case 16:
+      stars.querySelector('li:nth-child(2) i').className += '-o';
+      break;
+  }
+
+}
+
 deck.addEventListener('click', function(e) {
 
   if (e.target.nodeName === 'LI') {
@@ -144,6 +159,7 @@ deck.addEventListener('click', function(e) {
 
       // Update the score panel
       updateMoveCounter();
+      updateStars();
 
     }
 
