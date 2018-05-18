@@ -20,6 +20,10 @@ const cards = [
   'cube'
 ];
 
+const openCards = [];
+
+let moveCounter;
+
 const deck = document.getElementById('deck');
 const stars = document.getElementById('stars');
 const moves = document.getElementById('moves');
@@ -78,9 +82,6 @@ deck.append(fragment);
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
-const openCards = [];
-let moveCounter = 0;
 
 function displaySymbol(element) {
   element.classList.add('open');
