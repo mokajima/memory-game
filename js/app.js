@@ -183,3 +183,7 @@ deck.addEventListener('click', function(e) {
   }
 
 });
+
+document.getElementById('restart').addEventListener('click', function() {
+  initialize();
+});
