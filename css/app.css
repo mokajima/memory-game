@@ -18,6 +18,11 @@ body {
   padding: 0;
 }
 
+h2, button {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
   font-family: 'Coda', cursive;
@@ -28,6 +33,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 h1 {
@@ -108,4 +114,43 @@ h1 {
 .score-panel .restart {
   float: right;
   cursor: pointer;
+}
+
+/*
+ * Styles for the modal
+ */
+.modal {
+  background: #fff;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal.is-active {
+  display: flex;
+}
+
+.modal__restart {
+  background: #15b394;
+  border-radius: 5px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+  width: 180px;
+  height: 50px;
+  line-height: 50px;
+  transition: background 0.2s ease;
+}
+
+.modal__restart:hover {
+  background: #2d8675;
 }

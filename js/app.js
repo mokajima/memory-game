@@ -144,6 +144,17 @@ function updateStars() {
 
 }
 
+function gameOver() {
+
+  // Set the final score in a message
+  document.getElementById('modal__moves').textContent = moveCounter;
+  document.getElementById('modal__stars').textContent = stars.querySelectorAll('.fa-star').length;
+
+  // Display the modal
+  modal.classList.add('is-active');
+
+}
+
 deck.addEventListener('click', function(e) {
 
   if (e.target.nodeName === 'LI') {
@@ -181,6 +192,11 @@ deck.addEventListener('click', function(e) {
       updateMoveCounter();
       updateStars();
 
+      // Finish the game
+      if (16 === openCards.length) {
+        gameOver();
+      }
+
     }
 
   }
@@ -189,4 +205,14 @@ deck.addEventListener('click', function(e) {
 
 document.getElementById('restart').addEventListener('click', function() {
   initialize();
+});
+
+document.getElementById('modal__restart').addEventListener('click', function() {
+
+  // Hide the modal
+  modal.classList.remove('is-active');
+
+  // Initialize the game
+  initialize();
+
 });
