@@ -119,7 +119,7 @@ function addCardToOpenCards(element) {
 }
 
 function removeCardFromOpenCards() {
-  openCards.pop();
+  return openCards.pop();
 }
 
 function lockCard(element) {
@@ -181,10 +181,8 @@ deck.addEventListener('click', function(e) {
       } else {
 
         // if the cards do not match, remove the cards from the list and hide the card's symbol
-        removeCardFromOpenCards();
-        removeCardFromOpenCards();
-        hideSymbol(cardOne);
-        hideSymbol(cardTwo);
+        hideSymbol(removeCardFromOpenCards());
+        hideSymbol(removeCardFromOpenCards());
 
       }
 
