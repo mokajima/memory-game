@@ -181,8 +181,13 @@ deck.addEventListener('click', function(e) {
       } else {
 
         // if the cards do not match, remove the cards from the list and hide the card's symbol
-        hideSymbol(removeCardFromOpenCards());
-        hideSymbol(removeCardFromOpenCards());
+        cardOne = removeCardFromOpenCards();
+        cardTwo = removeCardFromOpenCards();
+
+        setTimeout(function() {
+          hideSymbol(cardOne);
+          hideSymbol(cardTwo);
+        }, 1000);
 
       }
 
