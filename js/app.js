@@ -220,6 +220,14 @@ document.addEventListener('animationend', function(e) {
     setTimeout(function() {
       hideSymbol(e.target);
     }, 500);
+
+  } else if (e.target.classList.contains('modal') && 'zoomOut' === e.animationName) {
+
+    // Hide the modal
+    e.target.classList.remove('is-active');
+
+    // Remove classes for CSS animations
+    e.target.classList.remove('animated', 'zoomOut');
   }
 
 });
@@ -231,7 +239,7 @@ document.getElementById('restart').addEventListener('click', function() {
 document.getElementById('modal__restart').addEventListener('click', function() {
 
   // Hide the modal
-  modal.classList.remove('is-active');
+  modal.classList.add('animated', 'zoomOut');
 
   // Initialize the game
   initialize();
