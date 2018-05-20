@@ -37,8 +37,7 @@ body {
 }
 
 h1 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font: 300 2em 'Open Sans', sans-serif;
 }
 
 /*
