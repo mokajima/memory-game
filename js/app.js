@@ -124,6 +124,10 @@ function removeCardFromOpenCards() {
 
 function lockCard(element) {
   element.classList.add('match');
+
+  // Add classes for CSS animations
+  element.classList.add('animated');
+  element.classList.add('rubberBand');
 }
 
 function updateMoveCounter() {
