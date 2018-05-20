@@ -50,7 +50,9 @@ function shuffle(array) {
   return array;
 }
 
-// Initizalize the game
+/**
+* @description Initizalize the game
+*/
 function initialize() {
 
   // Empty openCards
@@ -102,26 +104,46 @@ initialize();
  *    + if all cards have matched, display a message with the final score
  */
 
+/**
+* @description Display a card's symbol
+* @param {object} element - An element object whose symbol to display
+*/
 function displaySymbol(element) {
   element.classList.add('open');
   element.classList.add('show');
 }
 
+/**
+* @description Hide a card's symbol
+* @param {object} element - An element object whose symbol to hide
+*/
 function hideSymbol(element) {
   element.classList.remove('open');
   element.classList.remove('show');
 }
 
+/**
+* @description Add a card to openCards array
+* @param {object} element - An element object to add to openCards
+*/
 function addCardToOpenCards(element) {
   if (!openCards.includes(element)) {
     openCards.push(element);
   }
 }
 
+/**
+* @description Remove a card from openCards array
+* @returns {object} The element object removed from openCards array
+*/
 function removeCardFromOpenCards() {
   return openCards.pop();
 }
 
+/**
+* @description Lock a card in the open position
+* @param {object} element - An element object to lock
+*/
 function lockCard(element) {
   element.classList.add('match');
 
@@ -130,10 +152,16 @@ function lockCard(element) {
   element.classList.add('rubberBand');
 }
 
+/**
+* @description Update the move counter
+*/
 function updateMoveCounter() {
   moves.textContent = ++moveCounter;
 }
 
+/**
+* @description Update stars
+*/
 function updateStars() {
 
   // Remove a star according to the number of moves
@@ -148,6 +176,9 @@ function updateStars() {
 
 }
 
+/**
+* @description Display the modal with the final score
+*/
 function gameOver() {
 
   // Set the final score in a message
