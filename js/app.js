@@ -188,10 +188,9 @@ deck.addEventListener('click', function(e) {
         cardOne = removeCardFromOpenCards();
         cardTwo = removeCardFromOpenCards();
 
-        setTimeout(function() {
-          hideSymbol(cardOne);
-          hideSymbol(cardTwo);
-        }, 1000);
+        // Add classes for CSS animations
+        cardOne.classList.add('animated', 'wobble');
+        cardTwo.classList.add('animated', 'wobble');
 
       }
 
@@ -206,6 +205,21 @@ deck.addEventListener('click', function(e) {
 
     }
 
+  }
+
+});
+
+document.addEventListener('animationend', function(e) {
+
+  if (e.target.classList.contains('card') && 'wobble' === e.animationName) {
+
+    // Remove classes for CSS animations
+    e.target.classList.remove('animated', 'wobble');
+
+    // Hide the card's symbol after CSS animations end
+    setTimeout(function() {
+      hideSymbol(e.target);
+    }, 500);
   }
 
 });
