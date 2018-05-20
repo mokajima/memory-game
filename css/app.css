@@ -26,7 +26,7 @@ button {
 
 body {
   background: #f6f6f6;
-  font-family: 'Coda', cursive;
+  font-family: "Coda", cursive;
 }
 
 .container {
@@ -38,7 +38,7 @@ body {
 }
 
 h1 {
-  font: 300 2em 'Open Sans', sans-serif;
+  font: 300 2em "Open Sans", sans-serif;
 }
 
 /*
