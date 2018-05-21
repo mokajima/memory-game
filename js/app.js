@@ -122,8 +122,7 @@ initialize();
 * @param {object} element - An element object whose symbol to display
 */
 function displaySymbol(element) {
-  element.classList.add('open');
-  element.classList.add('show');
+  element.classList.add('open', 'show');
 }
 
 /**
@@ -158,11 +157,12 @@ function removeCardFromOpenCards() {
 * @param {object} element - An element object to lock
 */
 function lockCard(element) {
+
+  // Lock the card
   element.classList.add('match');
 
   // Add classes for CSS animations
-  element.classList.add('animated');
-  element.classList.add('rubberBand');
+  element.classList.add('animated', 'rubberBand');
 }
 
 /**
