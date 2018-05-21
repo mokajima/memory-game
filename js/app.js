@@ -130,8 +130,7 @@ function displaySymbol(element) {
 * @param {object} element - An element object whose symbol to hide
 */
 function hideSymbol(element) {
-  element.classList.remove('open');
-  element.classList.remove('show');
+  element.classList.remove('open', 'show');
 }
 
 /**
