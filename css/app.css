@@ -19,6 +19,7 @@ body {
 }
 
 h2,
+p,
 button {
   margin: 0;
   padding: 0;
@@ -96,6 +97,9 @@ h1 {
  */
 
 .score-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   text-align: left;
   width: 345px;
   margin-bottom: 10px;
@@ -113,7 +117,6 @@ h1 {
 }
 
 .score-panel .restart {
-  float: right;
   cursor: pointer;
 }
 
@@ -137,6 +140,10 @@ h1 {
 
 .modal.is-active {
   display: flex;
+}
+
+.modal__message {
+  margin: 1em 0;
 }
 
 .modal__restart {

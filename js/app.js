@@ -20,11 +20,15 @@ const cards = [
   'cube'
 ];
 
+let intervalId;
+let timeCounter;
+
 let openCards;
 
 let moveCounter;
 
 const deck = document.getElementById('deck');
+const time = document.getElementById('time');
 const stars = document.getElementById('stars');
 const moves = document.getElementById('moves');
 
@@ -57,6 +61,19 @@ function initialize() {
 
   // Empty openCards
   openCards = [];
+
+  // Reset the timer
+  timeCounter = 0;
+  time.textContent = timeCounter;
+
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+
+  // Start the timer;
+  intervalId = setInterval(function() {
+    time.textContent = ++timeCounter;
+  }, 1000);
 
   // Reset the move counter
   moveCounter = 0;
@@ -181,7 +198,11 @@ function updateStars() {
 */
 function gameOver() {
 
+  // Stop the timer
+  clearInterval(intervalId);
+
   // Set the final score in a message
+  document.getElementById('modal__time').textContent = timeCounter;
   document.getElementById('modal__moves').textContent = moveCounter;
   document.getElementById('modal__stars').textContent = stars.querySelectorAll('.fa-star').length;
 
