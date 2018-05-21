@@ -68,12 +68,8 @@ function initialize() {
 
   if (intervalId) {
     clearInterval(intervalId);
+    intervalId = '';
   }
-
-  // Start the timer;
-  intervalId = setInterval(function() {
-    time.textContent = ++timeCounter;
-  }, 1000);
 
   // Reset the move counter
   moveCounter = 0;
@@ -214,6 +210,13 @@ function gameOver() {
 deck.addEventListener('click', function(e) {
 
   if (e.target.nodeName === 'LI') {
+
+    // Start the timer
+    if (!intervalId) {
+      intervalId = setInterval(function() {
+        time.textContent = ++timeCounter;
+      }, 1000);
+    }
 
     // Display the card's symbol
     displaySymbol(e.target);
