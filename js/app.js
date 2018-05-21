@@ -273,7 +273,7 @@ document.addEventListener('animationend', function(e) {
     // Hide the card's symbol after CSS animations end
     setTimeout(function() {
       hideSymbol(e.target);
-    }, 500);
+    }, 200);
 
   } else if (e.target.classList.contains('modal') && 'zoomOut' === e.animationName) {
 
