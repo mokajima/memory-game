@@ -176,10 +176,10 @@ h1 {
   }
 
   .deck .card {
-    margin-bottom: 5%;
-    padding-bottom: 30%;
+    margin-bottom: 4%;
+    padding-bottom: 22%;
     position: relative;
-    width: 30%;
+    width: 22%;
     height: auto;
   }
 
@@ -194,5 +194,15 @@ h1 {
 @media screen and (max-width: 500px) {
   .score-panel {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .deck .card {
+    margin-bottom: 5%;
+    padding-bottom: 30%;
+    position: relative;
+    width: 30%;
+    height: auto;
   }
 }
