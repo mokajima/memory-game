@@ -25,6 +25,11 @@ button {
   padding: 0;
 }
 
+button {
+  background: transparent;
+  border: 0;
+}
+
 body {
   background: #f6f6f6;
   font-family: "Coda", cursive;
