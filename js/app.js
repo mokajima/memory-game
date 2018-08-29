@@ -93,6 +93,7 @@ function initialize() {
     const li = document.createElement('li');
     li.className = 'card';
     li.dataset.symbol = element;
+    li.tabIndex = 0;
 
     const i = document.createElement('i');
     i.className = `fa fa-${element}`;
@@ -209,7 +210,12 @@ function gameOver() {
 
 }
 
-deck.addEventListener('click', function(e) {
+
+/**
+* @description flip a card selected
+* @param {object} e - An event object
+*/
+function flipCard(e) {
 
   if (e.target.nodeName === 'LI') {
 
@@ -262,6 +268,20 @@ deck.addEventListener('click', function(e) {
 
     }
 
+  }
+
+}
+
+deck.addEventListener('click', flipCard);
+
+/*
+ * Flip a card using the space key
+ */
+deck.addEventListener('keypress', function(e) {
+
+  if ('Space' === e.code) {
+    e.preventDefault();
+    flipCard(e);
   }
 
 });
