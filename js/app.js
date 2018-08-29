@@ -22,9 +22,7 @@ const cards = [
 
 let intervalId;
 let timeCounter;
-
 let openCards;
-
 let moveCounter;
 
 const deck = document.getElementById('deck');
