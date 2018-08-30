@@ -13,7 +13,7 @@ https://mokajima.github.io/memory-game/
 
 ## How to play
 
-The gameplay rules are very simple. Click or tap two hidden cards at a time to locate the ones that match. The game ends once all cards have been correctly matched.
+The gameplay rules are very simple. Click or tap two hidden cards at a time to locate the ones that match. You can also select a card by pressing the space key. The game ends once all cards have been correctly matched.
 
 ## Install
 
