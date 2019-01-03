@@ -79,7 +79,7 @@ function initialize() {
   moves.textContent = moveCounter;
 
   // Reset the stars
-  stars.querySelectorAll('.fa-star-o').forEach(function(element) {
+  stars.querySelectorAll('.fa-star-o').forEach(element => {
     element.className = 'fa fa-star';
   });
 
@@ -88,7 +88,7 @@ function initialize() {
 
   const fragment = document.createDocumentFragment();
 
-  shuffle(cards).forEach(function(element) {
+  shuffle(cards).forEach(element => {
 
     const li = document.createElement('li');
     li.className = 'card';
@@ -221,7 +221,7 @@ function flipCard(e) {
 
     // Start the timer
     if (!intervalId) {
-      intervalId = setInterval(function() {
+      intervalId = setInterval(() => {
         time.textContent = ++timeCounter;
       }, 1000);
     }
@@ -277,7 +277,7 @@ deck.addEventListener('click', flipCard);
 /*
  * Flip a card using the space key
  */
-deck.addEventListener('keypress', function(e) {
+deck.addEventListener('keypress', e => {
 
   if ('Space' === e.code) {
     e.preventDefault();
@@ -286,7 +286,7 @@ deck.addEventListener('keypress', function(e) {
 
 });
 
-document.addEventListener('animationend', function(e) {
+document.addEventListener('animationend', e => {
 
   if (e.target.classList.contains('card') && 'wobble' === e.animationName) {
 
@@ -294,7 +294,7 @@ document.addEventListener('animationend', function(e) {
     e.target.classList.remove('animated', 'wobble');
 
     // Hide the card's symbol after CSS animations end
-    setTimeout(function() {
+    setTimeout(() => {
       hideSymbol(e.target);
     }, 200);
 
@@ -314,7 +314,7 @@ document.addEventListener('animationend', function(e) {
  */
 document.getElementById('restart').addEventListener('click', initialize);
 
-document.getElementById('modal__restart').addEventListener('click', function() {
+document.getElementById('modal__restart').addEventListener('click', () => {
 
   // Hide the modal
   modal.classList.add('animated', 'zoomOut');
