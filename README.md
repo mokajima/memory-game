@@ -2,6 +2,8 @@
 
 The Memory Game is a complete browser-based card matching game.
 
+![Screenshot](https://mokajima.github.io/portfolio/images/memory-game.jpg)
+
 ## Demo
 
 https://mokajima.github.io/memory-game/
