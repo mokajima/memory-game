@@ -1,3 +1,4 @@
+// @format
 /*
  * Create a list that holds all of your cards
  */
@@ -17,7 +18,7 @@ const cards = [
   'bolt',
   'bicycle',
   'paper-plane-o',
-  'cube'
+  'cube',
 ];
 
 let intervalId;
@@ -39,11 +40,12 @@ const moves = document.getElementById('moves');
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
 
   // While there remain elements to shuffle...
   while (currentIndex !== 0) {
-
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -58,10 +60,9 @@ function shuffle(array) {
 }
 
 /**
-* @description Initizalize the game
-*/
+ * @description Initizalize the game
+ */
 function initialize() {
-
   // Empty openCards
   openCards = [];
 
@@ -89,7 +90,6 @@ function initialize() {
   const fragment = document.createDocumentFragment();
 
   shuffle(cards).forEach(element => {
-
     const li = document.createElement('li');
     li.className = 'card';
     li.dataset.symbol = element;
@@ -100,12 +100,10 @@ function initialize() {
 
     li.append(i);
     fragment.append(li);
-
   });
 
   // Add the fragment to the deck
   deck.append(fragment);
-
 }
 
 initialize();
@@ -122,25 +120,25 @@ initialize();
  */
 
 /**
-* @description Display a card's symbol
-* @param {object} element - An element object whose symbol to display
-*/
+ * @description Display a card's symbol
+ * @param {object} element - An element object whose symbol to display
+ */
 function displaySymbol(element) {
   element.classList.add('open', 'show');
 }
 
 /**
-* @description Hide a card's symbol
-* @param {object} element - An element object whose symbol to hide
-*/
+ * @description Hide a card's symbol
+ * @param {object} element - An element object whose symbol to hide
+ */
 function hideSymbol(element) {
   element.classList.remove('open', 'show');
 }
 
 /**
-* @description Add a card to openCards array
-* @param {object} element - An element object to add to openCards
-*/
+ * @description Add a card to openCards array
+ * @param {object} element - An element object to add to openCards
+ */
 function addCardToOpenCards(element) {
   if (!openCards.includes(element)) {
     openCards.push(element);
@@ -148,19 +146,18 @@ function addCardToOpenCards(element) {
 }
 
 /**
-* @description Remove a card from openCards array
-* @returns {object} The element object removed from openCards array
-*/
+ * @description Remove a card from openCards array
+ * @returns {object} The element object removed from openCards array
+ */
 function removeCardFromOpenCards() {
   return openCards.pop();
 }
 
 /**
-* @description Lock a card in the open position
-* @param {object} element - An element object to lock
-*/
+ * @description Lock a card in the open position
+ * @param {object} element - An element object to lock
+ */
 function lockCard(element) {
-
   // Lock the card
   element.classList.add('match');
 
@@ -169,17 +166,16 @@ function lockCard(element) {
 }
 
 /**
-* @description Update the move counter
-*/
+ * @description Update the move counter
+ */
 function updateMoveCounter() {
   moves.textContent = ++moveCounter;
 }
 
 /**
-* @description Update stars
-*/
+ * @description Update stars
+ */
 function updateStars() {
-
   // Remove a star according to the number of moves
   switch (moveCounter) {
     case 12:
@@ -189,36 +185,32 @@ function updateStars() {
       stars.querySelector('li:nth-child(2) i').className += '-o';
       break;
   }
-
 }
 
 /**
-* @description Display the modal with the final score
-*/
+ * @description Display the modal with the final score
+ */
 function gameOver() {
-
   // Stop the timer
   clearInterval(intervalId);
 
   // Set the final score in a message
   document.getElementById('modal__time').textContent = timeCounter;
   document.getElementById('modal__moves').textContent = moveCounter;
-  document.getElementById('modal__stars').textContent = stars.querySelectorAll('.fa-star').length;
+  document.getElementById('modal__stars').textContent = stars.querySelectorAll(
+    '.fa-star',
+  ).length;
 
   // Display the modal
   modal.classList.add('is-active');
-
 }
 
-
 /**
-* @description flip a card selected
-* @param {object} e - An event object
-*/
+ * @description flip a card selected
+ * @param {object} e - An event object
+ */
 function flipCard(e) {
-
   if (e.target.nodeName === 'LI') {
-
     // Start the timer
     if (!intervalId) {
       intervalId = setInterval(() => {
@@ -234,19 +226,15 @@ function flipCard(e) {
 
     // Check to see if the two cards match
     if (0 === openCards.length % 2) {
-
       // Get selected cards
       let cardOne = openCards[openCards.length - 1];
       let cardTwo = openCards[openCards.length - 2];
 
       if (cardOne.dataset.symbol === cardTwo.dataset.symbol) {
-
         // If the cards do match, lock the cards in the open position
         lockCard(cardOne);
         lockCard(cardTwo);
-
       } else {
-
         // if the cards do not match, remove the cards from the list and hide the card's symbol
         cardOne = removeCardFromOpenCards();
         cardTwo = removeCardFromOpenCards();
@@ -254,7 +242,6 @@ function flipCard(e) {
         // Add classes for CSS animations
         cardOne.classList.add('animated', 'wobble');
         cardTwo.classList.add('animated', 'wobble');
-
       }
 
       // Update the score panel
@@ -265,11 +252,8 @@ function flipCard(e) {
       if (16 === openCards.length) {
         gameOver();
       }
-
     }
-
   }
-
 }
 
 deck.addEventListener('click', flipCard);
@@ -278,18 +262,14 @@ deck.addEventListener('click', flipCard);
  * Flip a card using the space key
  */
 deck.addEventListener('keypress', e => {
-
   if ('Space' === e.code) {
     e.preventDefault();
     flipCard(e);
   }
-
 });
 
 document.addEventListener('animationend', e => {
-
   if (e.target.classList.contains('card') && 'wobble' === e.animationName) {
-
     // Remove classes for CSS animations
     e.target.classList.remove('animated', 'wobble');
 
@@ -297,16 +277,16 @@ document.addEventListener('animationend', e => {
     setTimeout(() => {
       hideSymbol(e.target);
     }, 200);
-
-  } else if (e.target.classList.contains('modal') && 'zoomOut' === e.animationName) {
-
+  } else if (
+    e.target.classList.contains('modal') &&
+    'zoomOut' === e.animationName
+  ) {
     // Hide the modal
     e.target.classList.remove('is-active');
 
     // Remove classes for CSS animations
     e.target.classList.remove('animated', 'zoomOut');
   }
-
 });
 
 /*
@@ -315,11 +295,9 @@ document.addEventListener('animationend', e => {
 document.getElementById('restart').addEventListener('click', initialize);
 
 document.getElementById('modal__restart').addEventListener('click', () => {
-
   // Hide the modal
   modal.classList.add('animated', 'zoomOut');
 
   // Initialize the game
   initialize();
-
 });
